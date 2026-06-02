@@ -2263,6 +2263,10 @@ module ietf-schc-coap {
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
 
+## Version -07 to -08 ## {#sec-07-08}
+
+* Editorial update of reference entries.
+
 ## Version -06 to -07 ## {#sec-06-07}
 
 * Removed content about the updates to the OSCORE Option expected from draft-ietf-core-oscore-key-update.
