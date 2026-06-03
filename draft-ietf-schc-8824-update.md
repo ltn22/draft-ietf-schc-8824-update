@@ -2159,7 +2159,7 @@ module ietf-schc-coap {
      This module extends the ietf-schc module defined in RFC 9363 to
      include the new CoAP options as defined in RFC YYYY.";
 
-  revision 2025-12-01 {
+  revision 2026-06-03 {
     description
       "New CoAP extensions and extended OSCORE fields.";
     reference
@@ -2249,7 +2249,7 @@ module ietf-schc-coap {
   identity fl-oscore-oscore-piv-length {
        base "schc:fl-base-type";
        description
-         "Size in bytes of the OSCORE Partial IV corresponding to n.";
+         "Size in bytes of the OSCORE Partial IV, equal to n.";
        reference
          "RFC YYYY Static Context Header Compression (SCHC) for the
                    Constrained Application Protocol (CoAP) (see
@@ -2258,7 +2258,7 @@ module ietf-schc-coap {
 }
 
 ~~~~~~~~~~~
-{: sourcecode-name="ietf-schc-coap@2025-12-01.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
+{: sourcecode-name="ietf-schc-coap@2026-06-03.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
 
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
@@ -2266,6 +2266,8 @@ module ietf-schc-coap {
 ## Version -07 to -08 ## {#sec-07-08}
 
 * Updated editor's notes about the YANG data model from {{RFC9363}}.
+
+* Shortened one too-long line in the YANG data model.
 
 * Editorial update of reference entries.
 
