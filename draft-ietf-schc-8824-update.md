@@ -311,7 +311,7 @@ If the Token Length field value does not change over time, the SCHC Rule describ
 
 Otherwise, if the Token Length field value changes over time, the SCHC Rule does not set the TV, while setting the MO to "ignore" and the CDA to "value-sent". The Rule may also use a "match-mapping" MO to compress the value.
 
-Editor's note: in the YANG data model created by {{RFC9363}}, the description of the Token Length field should be updated by adding a reference to {{RFC8974}}.
+Editor's note: in a next revision of the YANG data model created by {{RFC9363}}, the definition of fid-coap-tkl corresponding to the Token Length field should be updated by adding a reference to {{RFC8974}}.
 
 ## CoAP Code Field # {#ssec-coap-code-field}
 
@@ -335,7 +335,7 @@ Instead, SCHC MUST use the value of the Token Length field to define the size of
 
 This construct avoids ambiguity with the Token Length field and results in a more efficient compression of the Token field.
 
-Editor's note: in the YANG data model created by {{RFC9363}}, the description of the "tkl" function and of the Token field should be updated by adding a reference to {{RFC8974}}.
+Editor's note: in a next revision of the YANG data model created by {{RFC9363}}, the definition of fid-coap-token corresponding to the Token field should be updated by adding a reference to {{RFC8974}}.
 
 # Compression of CoAP Options # {#sec-coap-options}
 
@@ -2264,6 +2264,8 @@ module ietf-schc-coap {
 {:removeinrfc}
 
 ## Version -07 to -08 ## {#sec-07-08}
+
+* Updated editor's notes about the YANG data model from {{RFC9363}}.
 
 * Editorial update of reference entries.
 
