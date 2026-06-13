@@ -2384,6 +2384,6 @@ module ietf-schc-coap {
 # Acknowledgments # {#acknowledgments}
 {:numbered="false"}
 
-The authors sincerely thank {{{Christian Amsüss}}}, {{{Carles Gomez Montenegro}}}, {{{Quentin Lampin}}}, {{{John Preuß Mattsson}}}, {{{Göran Selander}}}, {{{Pascal Thubert}}}, and {{{Éric Vyncke}}} for their comments and feedback.
+The authors sincerely thank {{{Christian Amsüss}}}, {{{Carles Gomez Montenegro}}}, {{{Rikard Höglund}}}, {{{Quentin Lampin}}}, {{{Alexander Pelov}}}, {{{John Preuß Mattsson}}}, {{{Göran Selander}}}, {{{Pascal Thubert}}}, and {{{Éric Vyncke}}} for their comments and feedback.
 
 This work was supported by the Sweden's Innovation Agency VINNOVA within the EUREKA CELTIC-NEXT project CYPRESS; and by the H2020 projects SIFIS-Home (Grant agreement 952652) and ARCADIAN-IoT (Grant agreement 101020259).
