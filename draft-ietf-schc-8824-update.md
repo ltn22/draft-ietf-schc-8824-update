@@ -139,9 +139,11 @@ In particular, this documents replaces and obsoletes {{RFC8824}} as follows:
 
 * It clarifies how the SCHC compression handles CoAP options in general (see {{sec-field-descriptors-coap-options}}).
 
-* It clarifies the SCHC compression for the CoAP options: Size1, Size2, Proxy-Uri, and Proxy-Scheme (see {{ssec-size1-size2-proxy-uri-proxy-scheme-option}}); ETag and If-Match (see {{ssec-etag-if-match-option}}); and If-None-Match (see {{ssec-if-none-match}}).
+* It clarifies the SCHC compression for the CoAP options Size1, Size2, Proxy-Uri, and Proxy-Scheme (see {{ssec-size1-size2-proxy-uri-proxy-scheme-option}}).
 
 * It defines the SCHC compression for the recently defined CoAP options Proxy-Cri and Proxy-Scheme-Number (see {{ssec-proxy-cri-proxy-scheme-number-option}}).
+
+* It updates the SCHC compression processing for the CoAP options: ETag and If-Match (see {{ssec-etag-if-match-option}}); and If-None-Match (see {{ssec-if-none-match}}).
 
 * It defines the SCHC compression for the CoAP option Hop-Limit (see {{coap-options-hop-limit}}).
 
@@ -2265,9 +2267,11 @@ module ietf-schc-coap {
 
 ## Version -08 to -09 ## {#sec-08-09}
 
+* Clarified overview of changes from RFC 8824 in Section 1, as to the CoAP options ETag, If-Match, and If-None-Match.
+
 * Fixed occurrence of SCHC subfield name from kid_context to kid_ctx.
 
-* YANG data model
+* YANG data model:
 
   * Consistent use of placeholders for RFC numbers.
 
