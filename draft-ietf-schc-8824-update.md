@@ -570,7 +570,7 @@ If a SCHC Rule is intended to compress a CoAP message that specifies the OSCORE 
 
 {{fig-oscore-option}} shows the original format of the OSCORE Option value with the four subfields flags, piv, kid_ctx, and kid superimposed on it. If future specifications extend the OSCORE Option value encoding, e.g., by defining the use of the eight and seventh least significant bits in the first byte of flags, this might result in additional subfields besides the four original ones, hence in corresponding Field Descriptors intended to be used in SCHC Rules.
 
-If a subfield is not present, then the corresponding Field Descriptor in the SCHC Rule describes the TV set to b'', with the MO set to "equal" and the CDA set to "not-sent". Note that, if the subfield kid_context is present, it directly includes the size octet, i.e., s.
+If a subfield is not present, then the corresponding Field Descriptor in the SCHC Rule describes the TV set to b'', with the MO set to "equal" and the CDA set to "not-sent". Note that, if the subfield kid_ctx is present, it directly includes the size octet, i.e., s.
 
 If the piv subfield is present, SCHC MUST NOT send it as variable-size data in the Compression Residue. As a result, SCHC does not send the size of the residue resulting from the compression of the piv subfield, which is otherwise requested for variable-size fields when the CDA specified in the Field Descriptor is "value-sent" or LSB (see {{Section 7.4.2 of RFC8724}}).
 
@@ -2264,6 +2264,8 @@ module ietf-schc-coap {
 {:removeinrfc}
 
 ## Version -08 to -09 ## {#sec-08-09}
+
+* Fixed occurrence of SCHC subfield name from kid_context to kid_ctx.
 
 * YANG data model
 
