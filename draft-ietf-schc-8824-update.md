@@ -2117,6 +2117,8 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 
 This appendix defines the ietf-schc-coap module, which extends the ietf-schc module defined in {{RFC9363}} to include the new CoAP options as defined in the present document.
 
+Note to RFC Editor: In the YANG data model below, please replace all occurrences of "XXXX" with the RFC number of this specification and delete this paragraph.
+
 ~~~~~~~~~~~ yang
 
 module ietf-schc-coap {
@@ -2155,13 +2157,13 @@ module ietf-schc-coap {
      ****************************************************************
 
      This module extends the ietf-schc module defined in RFC 9363 to
-     include the new CoAP options as defined in RFC YYYY.";
+     include the new CoAP options as defined in RFC XXXX.";
 
-  revision 2026-06-03 {
+  revision 2026-06-14 {
     description
       "New CoAP extensions and extended OSCORE fields.";
     reference
-      "RFC YYYY Static Context Header Compression (SCHC) for the
+      "RFC XXXX Static Context Header Compression (SCHC) for the
                 Constrained Application Protocol (CoAP) (see
                 Sections 5 and 6)";
   }
@@ -2173,7 +2175,7 @@ module ietf-schc-coap {
     description
       "Proxy-Cri option.";
     reference
-      "RFC XXXX Constrained Resource Identifiers";
+      "RFC 9988 Constrained Resource Identifiers";
   }
 
   identity fid-coap-option-proxy-scheme-number {
@@ -2181,7 +2183,7 @@ module ietf-schc-coap {
     description
       "Proxy-Scheme-Number option.";
     reference
-      "RFC XXXX Constrained Resource Identifiers";
+      "RFC 9988 Constrained Resource Identifiers";
   }
 
   identity fid-coap-option-hop-limit {
@@ -2249,19 +2251,23 @@ module ietf-schc-coap {
        description
          "Size in bytes of the OSCORE Partial IV, equal to n.";
        reference
-         "RFC YYYY Static Context Header Compression (SCHC) for the
+         "RFC XXXX Static Context Header Compression (SCHC) for the
                    Constrained Application Protocol (CoAP) (see
                    Section 6.4)";
   }
 }
 
 ~~~~~~~~~~~
-{: sourcecode-name="ietf-schc-coap@2026-06-03.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
+{: sourcecode-name="ietf-schc-coap@2026-06-14.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
 
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
 
 ## Version -08 to -09 ## {#sec-08-09}
+
+* YANG data model
+
+  * Consistent use of placeholders for RFC numbers.
 
 * Editorial fixes and improvements.
 
