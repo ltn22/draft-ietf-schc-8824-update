@@ -313,7 +313,7 @@ If the Token Length field value does not change over time, the SCHC Rule describ
 
 Otherwise, if the Token Length field value changes over time, the SCHC Rule does not set the TV, while setting the MO to "ignore" and the CDA to "value-sent". The Rule may also use a "match-mapping" MO to compress the value.
 
-Editor's note: in a next revision of the YANG data model created by {{RFC9363}}, the definition of fid-coap-tkl corresponding to the Token Length field should be updated by adding a reference to {{RFC8974}}.
+Consistent with the above, this section updates the ietf-schc module defined in {{RFC9363}}. In particular, the definition of the fid-coap-tkl "identity" statement is updated by replacing the argument of its "reference" substatement with the following string: "RFC 8974 Extended Tokens and Stateless Clients in the Constrained Application Protocol (CoAP)".
 
 ## CoAP Code Field # {#ssec-coap-code-field}
 
@@ -337,7 +337,7 @@ Instead, SCHC MUST use the value of the Token Length field to define the size of
 
 This construct avoids ambiguity with the Token Length field and results in a more efficient compression of the Token field.
 
-Editor's note: in a next revision of the YANG data model created by {{RFC9363}}, the definition of fid-coap-token corresponding to the Token field should be updated by adding a reference to {{RFC8974}}.
+Consistent with the above, this section updates the ietf-schc module defined in {{RFC9363}}. In particular, the definition of the fid-coap-token "identity" statement is updated by replacing the argument of its "reference" substatement with the following string: "RFC 8974 Extended Tokens and Stateless Clients in the Constrained Application Protocol (CoAP)".
 
 # Compression of CoAP Options # {#sec-coap-options}
 
@@ -2275,6 +2275,8 @@ module ietf-schc-coap {
 * Clarified overview of changes from RFC 8824 in Section 1, as to the CoAP options ETag, If-Match, and If-None-Match.
 
 * Fixed occurrence of SCHC subfield name from kid_context to kid_ctx.
+
+* Final text about updated reference in the YANG data model from RFC 9363.
 
 * YANG data model:
 
