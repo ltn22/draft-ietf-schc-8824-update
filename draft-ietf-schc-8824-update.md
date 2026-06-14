@@ -357,7 +357,7 @@ As further discussed in {{I-D.ietf-schc-universal-option}}, the composition and 
 
 The syntactic approach operates faithfully to the byte-representation of CoAP options used on the wire. Consequently, it requires multiple Field Descriptors for each given instance of CoAP option to be compressed/decompressed. That is, each of such Field Descriptors pertains to the compression/decompression of the Option Delta, the Option Length, or the Option Value of the CoAP option in question.
 
-On the contrary, the typically used semantic approach abstracts away from the byte-representation of CoAP options (or, more generally, of protocol header fields) and map those into generic representations identified by the FIDs of the related Field Descriptors. The semantic approach effectively streamlines Field Descriptors related to CoAP options as required to specify only information about the compression/decompression of the Option Value.
+On the contrary, the typically used semantic approach abstracts away from the byte-representation of CoAP options (or, more generally, of protocol header fields) and maps those into generic representations identified by the FIDs of the related Field Descriptors. The semantic approach effectively streamlines Field Descriptors related to CoAP options as required to specify only information about the compression/decompression of the Option Value.
 
 The rest of this document refers to the semantic approach, especially when defining the SCHC compression/decompression of CoAP options as well as when providing examples of CoAP header compression.
 
