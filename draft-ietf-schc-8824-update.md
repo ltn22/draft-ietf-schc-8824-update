@@ -275,11 +275,15 @@ CoAP compression differs from IPv6 and UDP compression in the following aspects:
 
   If the CDA in the Field Descriptor is set to "not-sent" or to "mapping-sent", then the FL is not set. In fact, the field length can always be determined based on what is specified in the TV of the Field Descriptor.
 
-  Otherwise, the FL can specify an exact length in bits, in case it is known in advance that the present header field is going to be used with such a length. More generally and building on {{Section 7.4.2 of RFC8724}}, the following applies when doing SCHC compression of a variable-length field for which it is not possible to specify an exact, expected length in the FL of the corresponding Field Descriptor.
+  Otherwise, the FL can specify an exact length in bits, if it is known in advance that the present header field is going to be used with such a length. More generally and building on {{Section 7.4.2 of RFC8724}}, the following applies when doing SCHC compression of a variable-length field for which it is not possible to specify an exact, expected length in the FL of the corresponding Field Descriptor.
 
-  If the field compression relies on the CDA "value-sent" or LSB, then a function "var" is used for the FL in the Field Descriptor, with byte being the unit used for the residue value's size. Alternatively, a function "var_X" can be used for the FL in the Field Descriptor, with X being the unit other than byte used for the residue value's size. In particular, the function "var_bit" is defined and indicates bit as the unit used for the residue value's size. Consequently, SCHC will send the residue value's size in the Compression Residue as specified in {{Section 7.4.2 of RFC8724}}.
+  If the field compression relies on the CDA "value-sent" or LSB, then a function "var" can be used for the FL in the Field Descriptor, with byte being the unit used for the residue value's size. In such case, the residue value's size prepended to the residue value encodes the size of the residue value in bytes, and the decompressor MUST interpret the residue value as consisting of exactly that number of bytes.
 
-  As an alternative, if the length of the present field can be determined from the value of a previous field in the CoAP header, then it is possible to define a specific function for the FL in the Field Descriptor of the present field, with that function returning the length of the field in the unit specified with the function (e.g., see the "tkl" function defined in {{ssec-coap-token-field}}). This holds irrespective of the CDA used for compressing the field.
+  Alternatively to "var", a function "var_X" can be used for the FL in the Field Descriptor, with X being the unit other than byte that is used for the residue value's size. In particular, this document defines the function "var_bit". When the function "var_bit" is used, the residue value's size prepended to the residue value encodes the size of the residue value in bits, and the decompressor MUST interpret the residue value as consisting of exactly that number of bits. That is, since byte alignment in SCHC applies only at the end of the SCHC packet, the decompressor does not add any per-field padding.
+
+  When using the function "var" or a function "var_X" in the FL of the Field Descriptor, SCHC will send the residue value's size in the Compression Residue encoded as specified in {{Section 7.4.2 of RFC8724}}, using the unit associated with the function. For example, if the function "var_bit" is used and the residue value's size for the compressed field is 17 bits, that size is encoded as 0b1111 00010001.
+
+  As an alternative to the function "var" or to a function "var_X", if the length of the present field can be determined from the value of a previous field in the CoAP header, then it is possible to define a specific function for the FL in the Field Descriptor of the present field, with that function returning the length of the field in the unit specified with the function (e.g., see the "tkl" function defined in {{ssec-coap-token-field}}). This holds irrespective of the CDA used for compressing the field.
 
 * A field can appear several times in a CoAP header. This is typically the case for elements of a URI (i.e., path segments or query parameters). The SCHC specification {{RFC8724}} allows an FID to appear several times in the Rule and uses the Field Position (FP) to identify the correct instance, thus preventing MO's possible ambiguities.
 
@@ -2273,6 +2277,8 @@ module ietf-schc-coap {
 ## Version -08 to -09 ## {#sec-08-09}
 
 * Clarified overview of changes from RFC 8824 in Section 1, as to the CoAP options ETag, If-Match, and If-None-Match.
+
+* Clarified use of functions "var" and "var_X" in the FL of the Field Descriptor.
 
 * Fixed occurrence of SCHC subfield name from kid_context to kid_ctx.
 
