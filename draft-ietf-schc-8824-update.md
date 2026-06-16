@@ -351,7 +351,7 @@ In a SCHC Rule, the Field Descriptors related to CoAP options MUST be specified 
 
 In particular, the Field Descriptors related to CoAP options MUST be listed in the same order according to which the corresponding CoAP options appear in the CoAP message (i.e., ordered by option number).
 
-If a SCHC Rule is intended to compress a CoAP message where a repeatable CoAP option is specified multiple times, then the SCHC Rule MUST include different Field Descriptors that separately correspond to the different instances of that CoAP option. Those Field Descriptors MUST be listed in the same order of the corresponding CoAP option instances in the CoAP message.
+If a SCHC Rule is intended to compress a CoAP message where a repeatable CoAP option is specified multiple times, then the SCHC Rule generally includes different Field Descriptors that separately correspond to the different instances of that CoAP option. Those Field Descriptors MUST be listed in the same order of the corresponding CoAP option instances in the CoAP message. In order to optimize the compression, a single Field Descriptor MAY pertain to multiple adjacent instances of the same CoAP option that are treated as grouped together (e.g., see {{ssec-uri-path-uri-query-option}}).
 
 As further discussed in {{I-D.ietf-schc-universal-option}}, the composition and use of Field Descriptors for compressing/decompressing CoAP options can take a "syntactic" approach or a "semantic" approach.
 
