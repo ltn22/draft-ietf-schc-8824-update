@@ -2137,21 +2137,15 @@ module ietf-schc-coap {
   }
 
   organization
-    "IETF Static Context Header Compression (schc) Working Group";
+    "IETF SCHC (Static Context Header Compression) Working Group";
   contact
-    "WG Web:   <https://datatracker.ietf.org/wg/schc/about/>
-     WG List:  <mailto:schc@ietf.org>
+    "WG Web:   https://datatracker.ietf.org/wg/schc
+     WG List:  SCHC <mailto:schc@ietf.org>
      Editor:   Marco Tiloca
-       <mailto:marco.tiloca@ri.se>";
+               <mailto:marco.tiloca@ri.se>";
   description
     "This module extends the ietf-schc module defined in RFC 9363 to
      include the new CoAP options as defined in RFC XXXX.
-
-     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
-     NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
-     'MAY', and 'OPTIONAL' in this document are to be interpreted as
-     described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
-     they appear in all capitals, as shown here.
 
      Copyright (c) 2026 IETF Trust and the persons identified
      as authors of the code.  All rights reserved.
@@ -2163,14 +2157,14 @@ module ietf-schc-coap {
      Legal Provisions Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
+     All revisions of IETF and IANA published modules can be found
+     at the YANG Parameters registry group
+     (https://www.iana.org/assignments/yang-parameters).
+
      This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.
+     the RFC itself for full legal notices.";
 
-     All revisions of IETF and IANA-maintained modules can be found
-     in the 'YANG Parameters' registry group
-     (https://www.iana.org/assignments/yang-parameters).";
-
-  revision 2026-06-14 {
+  revision 2026-06-30 {
     description
       "New CoAP extensions and extended OSCORE fields.";
     reference
@@ -2257,7 +2251,17 @@ module ietf-schc-coap {
 
   // Function Length
 
-  identity fl-oscore-oscore-piv-length {
+  identity fl-variable-bit {
+       base "schc:fl-base-type";
+       description
+         "Residue length in bits is sent as defined for CoAP.";
+       reference
+         "RFC XXXX Static Context Header Compression (SCHC) for the
+                   Constrained Application Protocol (CoAP) (see
+                   Section 3.1)";
+  }
+
+  identity fl-oscore-piv-length {
        base "schc:fl-base-type";
        description
          "Size in bytes of the OSCORE Partial IV, equal to n.";
@@ -2269,7 +2273,7 @@ module ietf-schc-coap {
 }
 
 ~~~~~~~~~~~
-{: sourcecode-name="ietf-schc-coap@2026-06-14.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
+{: sourcecode-name="ietf-schc-coap@2026-06-30.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
 
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
@@ -2286,9 +2290,11 @@ module ietf-schc-coap {
 
 * YANG data model:
 
-  * Updated legal boilerplate.
+  * Updated legal boilerplate and other metadata.
 
   * Consistent use of placeholders for RFC numbers.
+
+  * Added the identity fl-variable-bit.
 
 * Editorial fixes and improvements.
 
