@@ -2278,6 +2278,10 @@ module ietf-schc-coap {
 
 * Fixed occurrence of SCHC subfield name from kid_context to kid_ctx.
 
+* A Field Descriptor can pertain to multiple adjacent instances of the same CoAP option grouped together.
+
+* Handling a variable number of path segments and query parameters requires different SCHC Rules.
+
 * Final text about updated reference in the YANG data model from RFC 9363.
 
 * YANG data model:
