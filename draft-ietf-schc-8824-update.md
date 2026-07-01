@@ -357,7 +357,7 @@ In a SCHC Rule, the Field Descriptors related to CoAP options MUST be specified 
 
 In particular, the Field Descriptors related to CoAP options MUST be listed in the same order according to which the corresponding CoAP options appear in the CoAP message (i.e., ordered by option number).
 
-If a SCHC Rule is intended to compress a CoAP message where a repeatable CoAP option is specified multiple times, then the SCHC Rule MUST include different Field Descriptors that separately correspond to the different instances of that CoAP option. Those Field Descriptors MUST be listed in the same order of the corresponding CoAP option instances in the CoAP message.
+If a SCHC Rule is intended to compress a CoAP message where a repeatable CoAP option is specified multiple times, then the SCHC Rule generally includes different Field Descriptors that separately correspond to the different instances of that CoAP option. Those Field Descriptors MUST be listed in the same order of the corresponding CoAP option instances in the CoAP message. In order to optimize the compression, a single Field Descriptor MAY pertain to multiple adjacent instances of the same CoAP option that are treated as grouped together (e.g., see {{ssec-uri-path-uri-query-option}}).
 
 As further discussed in {{I-D.ietf-schc-universal-option}}, the composition and use of Field Descriptors for compressing/decompressing CoAP options can take a "syntactic" approach or a "semantic" approach.
 
@@ -447,15 +447,7 @@ For instance, for a CORECONF path /c/X6?k=eth0, the Rule description can be as s
 | CoAP.<br>option(15) | var | 1  | Up | "k=" | MSB(16) | LSB        |
 {: #table-CoMicompress title="CORECONF URI compression. CoAP Option Numbers: 11 (Uri-Path), 15 (Uri-Query)." align="center"}
 
-### Variable Number of Path or Query Elements
-
-SCHC fixes the number of Uri-Path or Uri-Query elements in a Rule at Rule creation time. If the number of such elements varies, SCHC SHOULD either:
-
-* create several Rules to cover all possibilities; or
-
-* create a Rule that defines several entries for Uri-Path to cover the longest path and send a Compression Residue with a length of 0 to indicate that a Uri-Path entry is empty.
-
-   However, this adds 4 bits to the variable Compression Residue size (see {{Section 7.4.2 of RFC8724}}).
+SCHC fixes the number of Uri-Path or Uri-Query elements in a Rule at Rule creation time. If it is expected that the number of such elements varies across different CoAP messages, then different SCHC Rules need to be created in order to cover the different possibilities.
 
 ## CoAP Option Size1, Size2, Proxy-Uri, and Proxy-Scheme Fields # {#ssec-size1-size2-proxy-uri-proxy-scheme-option}
 
