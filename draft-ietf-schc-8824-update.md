@@ -2099,16 +2099,6 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 
 * Handling a variable number of path segments and query parameters requires different SCHC Rules.
 
-* Removed content related to the YANG module ietf-schc-coap:
-
-  * Appendix with the YANG module ietf-schc-coap.
-
-  * Security considerations about the YANG module ietf-schc-coap.
-
-  * IANA considerations about the YANG module ietf-schc-coap.
-
-* Removed text about references to update in the YANG module ietf-schc from RFC 9363.
-
 * Editorial fixes and improvements.
 
 ## Version -07 to -08 ## {#sec-07-08}
