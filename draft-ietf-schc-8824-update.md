@@ -54,16 +54,13 @@ author:
         email: anaminaburo@gmail.com
 
 normative:
-  RFC3688:
   RFC5116:
-  RFC6020:
   RFC7252:
   RFC7641:
   RFC7959:
   RFC7967:
   RFC8126:
   RFC8323:
-  RFC8407:
   RFC8613:
   RFC8724:
   RFC8768:
@@ -2088,7 +2085,7 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 
 * Removed text related to the YANG module ietf-schc defined in RFC 9363.
 
-* Removed referencee to RFC 9363 as not needed anymore.
+* Removed unnecessary references as not needed anymore: RFC 9363, RFC 3688, RFC 6020, RFC8407.
 
 ## Version -08 to -09 ## {#sec-08-09}
 
