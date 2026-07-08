@@ -2099,6 +2099,16 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 
 * Handling a variable number of path segments and query parameters requires different SCHC Rules.
 
+* Final text about updated reference in the YANG data model from RFC 9363.
+
+* YANG data model:
+
+  * Updated legal boilerplate and other metadata.
+
+  * Consistent use of placeholders for RFC numbers.
+
+  * Added the identity fl-variable-bit.
+
 * Editorial fixes and improvements.
 
 ## Version -07 to -08 ## {#sec-07-08}
