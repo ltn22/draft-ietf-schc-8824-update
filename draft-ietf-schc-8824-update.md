@@ -71,7 +71,6 @@ normative:
   RFC8974:
   RFC9175:
   RFC9177:
-  RFC9363:
   RFC9668:
   I-D.ietf-core-oscore-groupcomm:
   I-D.ietf-core-href:
@@ -2109,7 +2108,7 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 
 ## Version -07 to -08 ## {#sec-07-08}
 
-* Updated editor's notes about the YANG data model from {{RFC9363}}.
+* Updated editor's notes about the YANG data model from RFC 9363.
 
 * Shortened one too-long line in the YANG data model.
 
