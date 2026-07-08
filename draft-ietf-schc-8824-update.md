@@ -2082,6 +2082,14 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
 
+## Version -09 to -10 ## {#sec-09-10}
+
+* Removed the YANG module ietf-schc-coap and text related to it.
+
+* Removed text related to the YANG module ietf-schc defined in RFC 9363.
+
+* Removed referencee to RFC 9363 as not needed anymore.
+
 ## Version -08 to -09 ## {#sec-08-09}
 
 * Clarified overview of changes from RFC 8824 in Section 1, as to the CoAP options ETag, If-Match, and If-None-Match.
