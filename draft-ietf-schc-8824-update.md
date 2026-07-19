@@ -945,7 +945,7 @@ The Outer SCHC Rule shown in {{table-Outer-Rules}} is used, also to process the 
 | CoAP.<br>Version                 | 2       | 1  | Bi | 1                    | equal   | not- <br> sent |                    |
 | CoAP.<br>Type                    | 2       | 1  | Up | 0                    | equal   | not- <br> sent |                    |
 | CoAP.<br>Type                    | 2       | 1  | Dw | 2                    | equal   | not- <br> sent |                    |
-| CoAP.<br>TKL                     | 4       | 1  | Bi | 0b0001               | equal   | not- <br> sent |                    |
+| CoAP.<br>TKL                     | var     | 1  | Bi | 0b0001               | equal   | not- <br> sent |                    |
 | CoAP.<br>Code                    | 8       | 1  | Up | 2                    | equal   | not- <br> sent |                    |
 | CoAP.<br>Code                    | 8       | 1  | Dw | 68                   | equal   | not- <br> sent |                    |
 | CoAP.<br>MID                     | 16      | 1  | Bi | 0x0000               | MSB(12) | LSB            | MMMM               |
@@ -1082,7 +1082,7 @@ In contrast, the following compares these results with what would be obtained by
 | CoAP.<br>Version    | 2   | 1  | Bi | 1             | equal               | not-sent           |                    |
 | CoAP.<br>Type       | 2   | 1  | Up | 0             | equal               | not-sent           |                    |
 | CoAP.<br>Type       | 2   | 1  | Dw | 2             | equal               | not-sent           |                    |
-| CoAP.<br>TKL        | 4   | 1  | Bi | 0b0001        | equal               | not-sent           |                    |
+| CoAP.<br>TKL        | var | 1  | Bi | 0b0001        | equal               | not-sent           |                    |
 | CoAP.<br>Code       | 8   | 1  | Up | 2             | equal               | not-sent           |                    |
 | CoAP.<br>Code       | 8   | 1  | Dw | \[69, 132\]   | match- <br> mapping | mapping- <br> sent | C                  |
 | CoAP.<br>MID        | 16  | 1  | Bi | 0x0000        | MSB(12)             | LSB                | MMMM               |
@@ -1280,7 +1280,7 @@ The Device and the proxy share the SCHC Rule shown in {{fig-rules-device-proxy}}
 | CoAP.<br>Version    | 2   | 1  | Bi | 1                        | equal               | not-sent           |                    |
 | CoAP.<br>Type       | 2   | 1  | Up | 0                        | equal               | not-sent           |                    |
 | CoAP.<br>Type       | 2   | 1  | Dw | \[0, 2\]                 | match- <br> mapping | mapping- <br> sent | T                  |
-| CoAP.<br>TKL        | 4   | 1  | Bi | 0b0001                   | equal               | not-sent           |                    |
+| CoAP.<br>TKL        | var | 1  | Bi | 0b0001                   | equal               | not-sent           |                    |
 | CoAP.<br>Code       | 8   | 1  | Up | \[1, 2, <br> 3, 4\]      | match- <br> mapping | mapping- <br> sent | CC                 |
 | CoAP.<br>Code       | 8   | 1  | Dw | \[65, 68, <br> 69, 132\] | match- <br> mapping | mapping- <br> sent | CC                 |
 | CoAP.<br>MID        | 16  | 1  | Bi | 0x0000                   | MSB(12)             | LSB                | MMMM               |
@@ -1303,7 +1303,7 @@ Instead, the proxy and the Application Server share the SCHC Rule shown in {{fig
 | CoAP.<br>Version    | 2   | 1  | Bi | 1                        | equal               | not-sent           |                    |
 | CoAP.<br>Type       | 2   | 1  | Up | 0                        | equal               | not-sent           |                    |
 | CoAP.<br>Type       | 2   | 1  | Dw | \[0, 2\]                 | match- <br> mapping | mapping- <br> sent | T                  |
-| CoAP.<br>TKL        | 4   | 1  | Bi | 0b0001                   | equal               | not-sent           |                    |
+| CoAP.<br>TKL        | var | 1  | Bi | 0b0001                   | equal               | not-sent           |                    |
 | CoAP.<br>Code       | 8   | 1  | Up | \[1, 2, <br> 3, 4\]      | match- <br> mapping | mapping- <br> sent | CC                 |
 | CoAP.<br>Code       | 8   | 1  | Dw | \[65, 68, <br> 69, 132\] | match- <br> mapping | mapping- <br> sent | CC                 |
 | CoAP.<br>MID        | 16  | 1  | Bi | 0x0000                   | MSB(12)             | LSB                | MMMM               |
@@ -1506,7 +1506,7 @@ The Device and the proxy share the SCHC Rule shown in {{fig-rules-oscore-device-
 | CoAP.<br>Version                 | 2       | 1  | Bi | 1        | equal               | not-sent           |                    |
 | CoAP.<br>Type                    | 2       | 1  | Up | 0        | equal               | not-sent           |                    |
 | CoAP.<br>Type                    | 2       | 1  | Dw | \[0, 2\] | match- <br> mapping | mapping- <br> sent | T                  |
-| CoAP.<br>TKL                     | 4       | 1  | Bi | 0b0001   | equal               | not-sent           |                    |
+| CoAP.<br>TKL                     | var     | 1  | Bi | 0b0001   | equal               | not-sent           |                    |
 | CoAP.<br>Code                    | 8       | 1  | Up | 2        | equal               | not-sent           |                    |
 | CoAP.<br>Code                    | 8       | 1  | Dw | 68       | equal               | not-sent           |                    |
 | CoAP.<br>MID                     | 16      | 1  | Bi | 0x0000   | MSB(12)             | LSB                | MMMM               |
@@ -1535,7 +1535,7 @@ The proxy and the Application Server share the SCHC Rule shown in {{fig-rules-os
 | CoAP.<br>Version                 | 2       | 1  | Bi | 1        | equal               | not-sent           |                    |
 | CoAP.<br>Type                    | 2       | 1  | Up | 0        | equal               | not-sent           |                    |
 | CoAP.<br>Type                    | 2       | 1  | Dw | \[0, 2\] | match- <br> mapping | mapping- <br> sent | T                  |
-| CoAP.<br>TKL                     | 4       | 1  | Bi | 0b0001   | equal               | not-sent           |                    |
+| CoAP.<br>TKL                     | var     | 1  | Bi | 0b0001   | equal               | not-sent           |                    |
 | CoAP.<br>Code                    | 8       | 1  | Up | 2        | equal               | not-sent           |                    |
 | CoAP.<br>Code                    | 8       | 1  | Dw | 68       | equal               | not-sent           |                    |
 | CoAP.<br>MID                     | 16      | 1  | Bi | 0x0000   | MSB(12)             | LSB                | MMMM               |
