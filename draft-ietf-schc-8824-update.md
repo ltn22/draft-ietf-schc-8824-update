@@ -596,15 +596,15 @@ In this first scenario, the SCHC compressor on the NGW side receives a POST mess
 +----------+
 ~~~~
 
-| FID                 | FL | FP | DI | TV                           | MO                  | CDA                | Sent <br> \[bits\] |
-|---------------------|----|----|----|------------------------------|---------------------|--------------------|--------------------|
-| CoAP.<br>Version    | 2  | 1  | Bi | 1                            | equal               | not-sent           |                    |
-| CoAP.<br>Type       | 2  | 1  | Dw | CON                          | equal               | not-sent           |                    |
-| CoAP.<br>Type       | 2  | 1  | Up | \[ACK, <br> RST\]            | match- <br> mapping | mapping- <br> sent | T                  |
-| CoAP.<br>TKL        | 4  | 1  | Bi | 0b0000                       | equal               | not-sent           |                    |
-| CoAP.<br>Code       | 8  | 1  | Bi | \[0.00, <br> ... <br> 5.05\] | match- <br> mapping | mapping- <br> sent | CC CCC             |
-| CoAP.<br>MID        | 16 | 1  | Bi | 0x0000                       | MSB(7)              | LSB                | MID                |
-| CoAP.<br>option(11) | var| 1  | Dw | "status"                     | equal               | not-sent           |                    |
+| FID                 | FL  | FP | DI | TV                           | MO                  | CDA                | Sent <br> \[bits\] |
+|---------------------|-----|----|----|------------------------------|---------------------|--------------------|--------------------|
+| CoAP.<br>Version    | 2   | 1  | Bi | 1                            | equal               | not-sent           |                    |
+| CoAP.<br>Type       | 2   | 1  | Dw | CON                          | equal               | not-sent           |                    |
+| CoAP.<br>Type       | 2   | 1  | Up | \[ACK, <br> RST\]            | match- <br> mapping | mapping- <br> sent | T                  |
+| CoAP.<br>TKL        | var | 1  | Bi | 0b0000                       | equal               | not-sent           |                    |
+| CoAP.<br>Code       | 8   | 1  | Bi | \[0.00, <br> ... <br> 5.05\] | match- <br> mapping | mapping- <br> sent | CC CCC             |
+| CoAP.<br>MID        | 16  | 1  | Bi | 0x0000                       | MSB(7)              | LSB                | MID                |
+| CoAP.<br>option(11) | var | 1  | Dw | "status"                     | equal               | not-sent           |                    |
 {: #table-CoAP-header-1 title="CoAP Context to compress header without Token. CoAP Option Numbers: 11 (Uri-Path)." align="center"}
 
 In this example, SCHC compression elides the Version and Token Length fields. The 25 Method and Response Codes defined in {{RFC7252}} have been shrunk to 5 bits using a "match-mapping" MO. The Uri-Path contains a single element with the TV set to "status" and the CDA set to "not-sent", thereby eliding the single occurrence of the Uri-Path Option with value "status".
