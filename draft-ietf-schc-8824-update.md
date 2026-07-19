@@ -956,7 +956,7 @@ The Outer SCHC Rule shown in {{table-Outer-Rules}} is used, also to process the 
 | CoAP.<br>option(9).<br>piv       | osc.piv | 1  | Dw | b''                  | equal   | not- <br> sent |                    |
 | CoAP.<br>option(9).<br>kid_ctx   | var     | 1  | Bi | b''                  | equal   | not- <br> sent |                    |
 | CoAP.<br>option(9).<br>kid       | var_bit | 1  | Up | 0x636c69 <br> 656e70 | MSB(44) | LSB            | KKKK               |
-| CoAP.<br>option(9).<br>kid       | var_bit | 1  | Dw | b''                  | equal   | not- <br> sent |                    |
+| CoAP.<br>option(9).<br>kid       | var     | 1  | Dw | b''                  | equal   | not- <br> sent |                    |
 {: #table-Outer-Rules title="Outer SCHC Rule. CoAP Option Numbers: 9 (OSCORE)." align="center"}
 
 ~~~~~~~~~~~
@@ -1518,7 +1518,7 @@ The Device and the proxy share the SCHC Rule shown in {{fig-rules-oscore-device-
 | CoAP.<br>option(9).<br>piv       | osc.piv | 1  | Dw | b''      | equal               | not-sent           |                    |
 | CoAP.<br>option(9).<br>kid_ctx   | var     | 1  | Bi | b''      | equal               | not-sent           |                    |
 | CoAP.<br>option(9).<br>kid       | var_bit | 1  | Up | 0x0000   | MSB(12)             | LSB                | KKKK               |
-| CoAP.<br>option(9).<br>kid       | var_bit | 1  | Dw | b''      | equal               | not-sent           |                    |
+| CoAP.<br>option(9).<br>kid       | var     | 1  | Dw | b''      | equal               | not-sent           |                    |
 | CoAP.<br>option(39)              | var     | 1  | Up | "coap"   | equal               | not-sent           |                    |
 {: #fig-rules-oscore-device-proxy title="Outer SCHC Rule between the Device and the Proxy. CoAP Option Numbers: 3 (Uri-Host), 9 (OSCORE), 39 (Proxy-Scheme)." align="center"}
 
@@ -1547,7 +1547,7 @@ The proxy and the Application Server share the SCHC Rule shown in {{fig-rules-os
 | CoAP.<br>option(9).<br>piv       | osc.piv | 1  | Dw | b''      | equal               | not-sent           |                    |
 | CoAP.<br>option(9).<br>kid_ctx   | var     | 1  | Bi | b''      | equal               | not-sent           |                    |
 | CoAP.<br>option(9).<br>kid       | var_bit | 1  | Up | 0x0000   | MSB(12)             | LSB                | KKKK               |
-| CoAP.<br>option(9).<br>kid       | var_bit | 1  | Dw | b''      | equal               | not-sent           |                    |
+| CoAP.<br>option(9).<br>kid       | var     | 1  | Dw | b''      | equal               | not-sent           |                    |
 {: #fig-rules-oscore-proxy-server title="Outer SCHC Rule between the Proxy and the Application Server. CoAP Option Numbers: 3 (Uri-Host), 9 (OSCORE)." align="center"}
 
 When the Device applies the Rule in {{fig-rules-oscore-device-server}} shared with the Application Server to the CoAP request in {{fig-example-req}}, this results in the Compressed Plaintext shown in {{fig-plaintext-req}}.
