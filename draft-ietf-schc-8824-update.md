@@ -429,7 +429,7 @@ For example, as per the Rule descriptions shown in {{table-complex-path}}, SCHC 
 
 | FID                 | FL  | FP | DI | TV                        | MO            | CDA          |
 |---------------------|-----|----|----|---------------------------|---------------|--------------|
-| CoAP.<br>option(11) | va  | 1  | Up | \["/a/b", <br> "/c/d"\]   | match-mapping | mapping-sent |
+| CoAP.<br>option(11) | var | 1  | Up | \["/a/b", <br> "/c/d"\]   | match-mapping | mapping-sent |
 | CoAP.<br>option(11) | var | 3  | Up |                           | ignore        | value-sent   |
 {: #table-complex-path title="Complex Path Example. CoAP Option Numbers: 11 (Uri-Path)." align="center"}
 
@@ -2270,7 +2270,7 @@ module ietf-schc-coap {
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
 
-## Version -09 - 10 
+## Version -09 - 10
 
 * add field length where missing
 
