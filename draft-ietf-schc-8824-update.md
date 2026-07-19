@@ -2280,7 +2280,13 @@ module ietf-schc-coap {
 
 ## Version -09 - 10
 
-* add field length where missing
+* FL defined as non-empty.
+
+* Fixed example rules to have FL not empty.
+
+* Clarified semantics of the osc.piv function.
+
+* Add field length in the example rules where missing.
 
 ## Version -08 to -09 ## {#sec-08-09}
 
