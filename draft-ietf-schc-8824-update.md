@@ -442,7 +442,7 @@ For instance, for a CORECONF path /c/X6?k=eth0, the Rule description can be as s
 
 | FID                 | FL  | FP | DI | TV   | MO      | CDA        |
 |---------------------|-----|----|----|------|---------|------------|
-| CoAP.<br>option(11) |  8  | 1  | Up | "c"  | equal   | not-sent   |
+| CoAP.<br>option(11) | var | 1  | Up | "c"  | equal   | not-sent   |
 | CoAP.<br>option(11) | var | 2  | Up |      | ignore  | value-sent |
 | CoAP.<br>option(15) | var | 1  | Up | "k=" | MSB(16) | LSB        |
 {: #table-CoMicompress title="CORECONF URI compression. CoAP Option Numbers: 11 (Uri-Path), 15 (Uri-Query)." align="center"}
