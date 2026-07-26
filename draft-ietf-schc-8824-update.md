@@ -54,16 +54,13 @@ author:
         email: anaminaburo@gmail.com
 
 normative:
-  RFC3688:
   RFC5116:
-  RFC6020:
   RFC7252:
   RFC7641:
   RFC7959:
   RFC7967:
   RFC8126:
   RFC8323:
-  RFC8407:
   RFC8613:
   RFC8724:
   RFC8768:
@@ -71,7 +68,6 @@ normative:
   RFC8974:
   RFC9175:
   RFC9177:
-  RFC9363:
   RFC9668:
   I-D.ietf-core-oscore-groupcomm:
   I-D.ietf-core-href:
@@ -325,8 +321,6 @@ If the Token Length field value does not change over time, the SCHC Rule describ
 
 Otherwise, if the Token Length field value changes over time, the SCHC Rule does not set the TV, while setting the MO to "ignore" and the CDA to "value-sent". The Rule may also use a "match-mapping" MO to compress the value.
 
-Consistent with the above, this section updates the ietf-schc module defined in {{RFC9363}}. In particular, the definition of the fid-coap-tkl "identity" statement is updated by replacing the argument of its "reference" substatement with the following string: "RFC 8974 Extended Tokens and Stateless Clients in the Constrained Application Protocol (CoAP)".
-
 ## CoAP Code Field # {#ssec-coap-code-field}
 
 The Code field takes value from the "Code" column of the "CoAP Codes" IANA registry, encoded as specified in {{Section 3 of RFC7252}}. This field indicates the Method Code of a CoAP request or the Response Code of a CoAP Response, while the value 0.00 indicates an Empty message. The compression of the CoAP Code field follows the same principle as that of the CoAP Type field.
@@ -348,8 +342,6 @@ For the Token field, SCHC MUST NOT send it as variable-size data in the Compress
 Instead, SCHC MUST use the value of the Token Length field to define the size of the Token field in the Compression Residue. To this end, SCHC designates a specific function, "tkl", that the Rule MUST use to complete the Field Descriptor. During the decompression, this function returns the length of the Token field in bytes, which is specified by the Token Length field as per {{Section 2.1 of RFC8974}}.
 
 This construct avoids ambiguity with the Token Length field and results in a more efficient compression of the Token field.
-
-Consistent with the above, this section updates the ietf-schc module defined in {{RFC9363}}. In particular, the definition of the fid-coap-token "identity" statement is updated by replacing the argument of its "reference" substatement with the following string: "RFC 8974 Extended Tokens and Stateless Clients in the Constrained Application Protocol (CoAP)".
 
 # Compression of CoAP Options # {#sec-coap-options}
 
@@ -2013,34 +2005,9 @@ SCHC compression emits variable-length Compression Residues for some CoAP fields
 
 SCHC header compression Rules MUST remain tightly coupled between the compressor and the decompressor. If the compression Rules get out of sync, a Compression Residue might be decompressed differently at the receiver, thus yielding a result different than the initial message submitted to compression procedures. Accordingly, any time the context Rules are updated on an OSCORE endpoint, that endpoint MUST trigger an update of the OSCORE key material, e.g., by running the lightweight key update protocol KUDOS {{I-D.ietf-core-oscore-key-update}}. Similar procedures may be appropriate to signal Rule updates when other message-protection mechanisms are in use.
 
-## YANG Module {#sec-security-considerations-yang-module}
-
-The YANG data model defined in {{sec-yang-module}} extends the ietf-schc module defined in {{RFC9363}}.
-
-Therefore, all the security considerations compiled in {{Section 8 of RFC9363}} also apply to the resulting extended YANG data model.
-
 # IANA Considerations
 
 This document has the following actions for IANA.
-
-Note to RFC Editor: Please replace all occurrences of "{{&SELF}}" with the RFC number of this specification and delete this paragraph.
-
-## IETF XML
-
-IANA is asked to register the following entry in the "IETF XML" registry {{RFC3688}}.
-
-* URI: urn:ietf:params:xml:ns:yang:ietf-schc-coap
-* Registrant Contact: The IESG.
-* XML: N/A; the requested URI is an XML namespace.
-
-## YANG Module Names
-
-IANA is asked to register the following entry in the "YANG Module Names" registry {{RFC6020}}{{RFC8407}} within the "YANG Parameters" registry group.
-
-* Name: ietf-schc-coap
-* Namespace: urn:ietf:params:xml:ns:yang:ietf-schc-coap
-* Prefix: schc-coap
-* Reference: {{&SELF}}
 
 ## Static Context Header Compression (SCHC) Parameters # {#sec-iana-registry-group}
 
@@ -2083,8 +2050,6 @@ The columns of this registry are:
 
   If the CoAP field in question is specifically a CoAP option, then X has the format "option(N)", where N is the option number of the CoAP option. The value N is taken from the "Number" column of the corresponding entry in the "CoAP Option Numbers" IANA registry {{CoAP.Option.Numbers}}.
 
-  Within the YANG data model originally specified in {{Section 6 of RFC9363}}, this identifier must have a corresponding item or set of items for the CoAP field or subfield associated with this entry.
-
 * Description: a short description of the CoAP field or subfield associated with this entry, together with public references to the resources that define it.
 
 * Reference: public references to the resources that define how a SCHC compression Rule works for the CoAP field or subfield associated with this entry.
@@ -2119,162 +2084,6 @@ If the expert becomes aware of a definition for SCHC compression of CoAP fields 
 
 --- back
 
-# YANG Data Model # {#sec-yang-module}
-
-This appendix defines the ietf-schc-coap module, which extends the ietf-schc module defined in {{RFC9363}} to include the new CoAP options as defined in the present document.
-
-Note to RFC Editor: In the YANG data model below, please replace all occurrences of "XXXX" with the RFC number of this specification and delete this paragraph.
-
-~~~~~~~~~~~ yang
-
-module ietf-schc-coap {
-  yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-schc-coap";
-  prefix schc-coap;
-
-  import ietf-schc {
-      prefix schc;
-  }
-
-  organization
-    "IETF SCHC (Static Context Header Compression) Working Group";
-  contact
-    "WG Web:   https://datatracker.ietf.org/wg/schc
-     WG List:  SCHC <mailto:schc@ietf.org>
-     Editor:   Marco Tiloca
-               <mailto:marco.tiloca@ri.se>";
-  description
-    "This module extends the ietf-schc module defined in RFC 9363 to
-     include the new CoAP options as defined in RFC XXXX.
-
-     Copyright (c) 2026 IETF Trust and the persons identified
-     as authors of the code.  All rights reserved.
-
-     Redistribution and use in source and binary forms, with
-     or without modification, is permitted pursuant to, and
-     subject to the license terms contained in, the Revised
-     BSD License set forth in Section 4.c of the IETF Trust's
-     Legal Provisions Relating to IETF Documents
-     (https://trustee.ietf.org/license-info).
-
-     All revisions of IETF and IANA published modules can be found
-     at the YANG Parameters registry group
-     (https://www.iana.org/assignments/yang-parameters).
-
-     This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.";
-
-  revision 2026-06-30 {
-    description
-      "New CoAP extensions and extended OSCORE fields.";
-    reference
-      "RFC XXXX Static Context Header Compression (SCHC) for the
-                Constrained Application Protocol (CoAP) (see
-                Sections 5 and 6)";
-  }
-
-  // Field ID
-
-  identity fid-coap-option-proxy-cri {
-    base "schc:fid-coap-option";
-    description
-      "Proxy-Cri option.";
-    reference
-      "RFC 9988 Constrained Resource Identifiers";
-  }
-
-  identity fid-coap-option-proxy-scheme-number {
-    base "schc:fid-coap-option";
-    description
-      "Proxy-Scheme-Number option.";
-    reference
-      "RFC 9988 Constrained Resource Identifiers";
-  }
-
-  identity fid-coap-option-hop-limit {
-    base "schc:fid-coap-option";
-    description
-      "Hop Limit option to avoid infinite forwarding loops.";
-    reference
-      "RFC 8768 Constrained Application Protocol (CoAP)
-                Hop-Limit Option";
-  }
-
-  identity fid-coap-option-echo {
-    base "schc:fid-coap-option";
-    description
-      "Echo option.";
-    reference
-      "RFC 9175 Constrained Application Protocol (CoAP):
-                Echo, Request-Tag, and Token Processing";
-  }
-
-  identity fid-coap-option-request-tag {
-    base "schc:fid-coap-option";
-    description
-      "Request-Tag option.";
-    reference
-      "RFC 9175 Constrained Application Protocol (CoAP):
-                Echo, Request-Tag, and Token Processing";
-  }
-
-  identity fid-coap-option-q-block1 {
-    base "schc:fid-coap-option";
-    description
-      "Q-Block1 option.";
-    reference
-      "RFC 9177 Constrained Application Protocol (CoAP)
-                Block-Wise Transfer Options Supporting
-                Robust Transmission";
-  }
-
-  identity fid-coap-option-q-block2 {
-    base "schc:fid-coap-option";
-    description
-      "Q-Block2 option.";
-    reference
-      "RFC 9177 Constrained Application Protocol (CoAP)
-                Block-Wise Transfer Options Supporting
-                Robust Transmission";
-  }
-
-  identity fid-coap-option-edhoc {
-    base "schc:fid-coap-option";
-    description
-      "EDHOC option.";
-    reference
-      "RFC 9668 Using Ephemeral Diffie-Hellman Over COSE (EDHOC)
-                with the Constrained Application Protocol (CoAP)
-                and Object Security for Constrained RESTful
-                Environments (OSCORE)";
-  }
-
-  // Function Length
-
-  identity fl-variable-bit {
-       base "schc:fl-base-type";
-       description
-         "Residue length in bits is sent as defined for CoAP.";
-       reference
-         "RFC XXXX Static Context Header Compression (SCHC) for the
-                   Constrained Application Protocol (CoAP) (see
-                   Section 3.1)";
-  }
-
-  identity fl-oscore-piv-length {
-       base "schc:fl-base-type";
-       description
-         "Size in bytes of the OSCORE Partial IV, equal to n.";
-       reference
-         "RFC XXXX Static Context Header Compression (SCHC) for the
-                   Constrained Application Protocol (CoAP) (see
-                   Section 6.4)";
-  }
-}
-
-~~~~~~~~~~~
-{: sourcecode-name="ietf-schc-coap@2026-06-30.yang" sourcecode-markers="true" #fig-yang-data-model title="SCHC CoAP Extension YANG Data Model."}
-
 # Document Updates # {#sec-document-updates}
 {:removeinrfc}
 
@@ -2286,7 +2095,11 @@ module ietf-schc-coap {
 
 * Clarified semantics of the osc.piv function.
 
-* Add field length in the example rules where missing.
+* Removed the YANG module ietf-schc-coap and text related to it.
+
+* Removed text related to the YANG module ietf-schc defined in RFC 9363.
+
+* Removed unnecessary references as not needed anymore: RFC 9363, RFC 3688, RFC 6020, RFC8407.
 
 ## Version -08 to -09 ## {#sec-08-09}
 
@@ -2314,7 +2127,7 @@ module ietf-schc-coap {
 
 ## Version -07 to -08 ## {#sec-07-08}
 
-* Updated editor's notes about the YANG data model from {{RFC9363}}.
+* Updated editor's notes about the YANG data model from RFC 9363.
 
 * Shortened one too-long line in the YANG data model.
 
@@ -2433,6 +2246,6 @@ module ietf-schc-coap {
 # Acknowledgments # {#acknowledgments}
 {:numbered="false"}
 
-The authors sincerely thank {{{Christian Amsüss}}}, {{{Carles Gomez Montenegro}}}, {{{Rikard Höglund}}}, {{{Quentin Lampin}}}, {{{Alexander Pelov}}}, {{{John Preuß Mattsson}}}, {{{Göran Selander}}}, {{{Pascal Thubert}}}, and {{{Éric Vyncke}}} for their comments and feedback.
+The authors sincerely thank {{{Christian Amsüss}}}, {{{Dhruv Dhody}}}, {{{Carles Gomez Montenegro}}}, {{{Rikard Höglund}}}, {{{Quentin Lampin}}}, {{{Alexander Pelov}}}, {{{John Preuß Mattsson}}}, {{{Göran Selander}}}, {{{Pascal Thubert}}}, and {{{Éric Vyncke}}} for their comments and feedback.
 
 This work was supported by the Sweden's Innovation Agency VINNOVA within the EUREKA CELTIC-NEXT project CYPRESS; and by the H2020 projects SIFIS-Home (Grant agreement 952652) and ARCADIAN-IoT (Grant agreement 101020259).
